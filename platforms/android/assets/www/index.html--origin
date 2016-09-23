@@ -1,0 +1,242 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        
+       	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" type="text/css">
+       	
+        <title>Hello World</title>
+
+    </head>
+    
+    <body onload="onLoad();">
+
+       <div data-role="page" id="login">
+            <div data-role="content">
+                <center><img src="img/esdm.png" width="50%"/></center>
+                <center><b>Kementrian Energi dan Sumber Daya Mineral</b></center>
+                <form>
+                    <input name="username" id="username" type="text" placeholder="Username" data-clear-btn="true">
+                    <input name="password" id="password" type="password" placeholder="Password" data-clear-btn="true">
+                </form>
+                <p align="right">
+                    <a href="#signup" data-role="button" data-inline="true" data-theme="c">Register</a>
+                    <button id="btnlogin" data-role="butoon" data-inline="true" data-theme="b">Login</button>
+                    <!-- <a href="#home-page" data-role="button" data-inline="true" data-theme="b">Login</a> -->
+                </p>
+            </div>
+        </div>
+        
+        <div data-role="page" id="signup">
+            <div data-role="content">
+                <center><img src="img/esdm.png" width="40%"/></center>
+                <center><b>Kementrian Energi dan Sumber Daya Mineral</b></center>
+                <form>
+                    <input name="email" id="email" type="text" placeholder="E-mail" data-clear-btn="true">
+                    <input name="username" id="username" type="text" placeholder="Username" data-clear-btn="true">
+                    <input name="password" id="password" type="text" placeholder="Password" data-clear-btn="true">
+                    <input name="passwordr" id="passwordr" type="text" placeholder="Ulangi Password" data-clear-btn="true">
+                    <input name="nm_depan" id="nm_depan" type="text" placeholder="Nama Depan" data-clear-btn="true">
+                    <input name="nm_belakang" id="nm_belakang" type="text" placeholder="Nama Belakang" data-clear-btn="true">
+                    <fieldset data-role="controlgroup" data-mini="true">
+                        <legend>Jenis Kelamin:</legend>
+                        <input name="radio-choice-v-6" id="radio-choice-v-6a" type="radio">
+                        <label for="radio-choice-v-6a">Pria</label>
+                        <input name="radio-choice-v-6" id="radio-choice-v-6b" type="radio">
+                        <label for="radio-choice-v-6b">Wanita</label>
+                    </fieldset>
+                </form>
+                <p align="right"><a href="#regisok" id="register" data-role="button" data-inline="true" data-theme="b">Register</a></p>
+            </div>
+        </div>
+        
+        <div data-role="page" id="regisok">
+            <div data-role="header" data-position="fixed">
+                <h1>Smart Book</h1>
+            </div>
+            <div data-role="content">
+                <center><img src="img/esdm.png" width="20%"/></center>
+                <h4 align="center">Akun anda telah berhasil dibuat</h4>
+                <h4 align="center">Silahkan Login</h4>
+                <center><a href="#login" data-role="button" data-theme="b">Login</a></center>
+            </div>
+        </div>
+        
+        <div data-role="page" id="home-page">
+    		<div data-role="header" data-theme="b">
+		        <h1>Smart Book</h1>
+		        <a href="#left-panel" data-icon="bullets" data-iconpos="notext" data-theme="b" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+		    </div><!-- /header -->
+		    
+    	<div role="main" class="ui-content">
+            <center><img src="img/esdm.png" width="25%"/></center>
+            <center><b>Kementrian Energi dan Sumber Daya Mineral</b></center>
+			<form>
+				<input name="search-1" id="search-1" placeholder="Cari Buku" value="" type="search">
+			</form>
+			<div data-role="tabs" id="tabs">
+  				<div data-role="navbar">
+    				<ul>
+		      			<li><a href="#one" data-ajax="false">Popular</a></li>
+		      			<li><a href="#two" data-ajax="false">Kategori</a></li>
+		      			<li><a href="#three" onclick="onError()" data-ajax="false">Pustaka</a></li>
+		    		</ul>
+		  	</div>
+			  <div id="one" >
+			    <ul id="mylist" data-role="listview" data-inset="true">
+         
+                </ul>
+			  </div>
+                
+			  <div id="two" >
+				<ul id="Kategori" data-role="listview" data-inset="true" onclick="onError()">
+         
+                </ul>
+			  </div>
+			  <div id="three">
+			  
+			  </div>
+			</div>
+	        <!--<a href="#" onclick="openPDF()" >
+                    <h1>pdf</h1>
+            </a>
+            <a href="#" onclick="downloadPDF()" >
+                    <h1>Download</h1>
+            </a>
+            <button id = "downloadFile">DOWNLOAD</button>-->
+	    </div><!-- /content -->
+        
+        <div id="popupExit" style="max-width:400px;" data-role="popup" data-theme="b" data-overlay-theme="b" data-dismissible="false">
+            <div data-role="header" data-theme="a">
+            <h4>Keluar Aplikasi?</h4>
+            </div>
+            <div class="ui-content" role="main">
+                <h4 class="ui-title">Anda yakin ingin keluar dari aplikasi?</h4>
+                <p align="center">
+                <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" data-rel="back">Batal</a>
+                <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" onclick="logOut()" data-transition="flow">Keluar</a></p>
+                <!-- <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" onclick="exitFromApp();" data-transition="flow">Keluar</a></p> -->
+            </div>
+        </div>
+
+	
+		<div data-role="panel" id="left-panel" data-theme="c">
+			<div data-role="listview">
+                <center><img src="img/esdm.png" width="25%"/></center>
+                <center><b>Smart Book</b></center>
+				<!--<li><a href="#profil" id="profil">Profil</a>-->
+				<li><a href="#about">About Us</a></li>
+				<li><a href="#term">Term and Condition</a></li>
+				<!--<li><a href="#">Rate Apps</a></li>-->
+                <li><a href="#" id="logout">Log Out</a></li>
+				<li><a href="#popupExit" data-rel="popup" data-position-to="window">Keluar</a></li>
+			</div>
+		</div><!-- /panel -->
+        </div>
+        
+        <div data-role="page" id="profil">
+            <div data-role="header" data-position="fixed" data-theme="b">
+                <a href="#home-page" data-icon="home" data-role="button" data-theme="c">Home</a>
+                <h1>Profile</h1>
+            </div>
+            <div data-role="content">
+                <h1 align="center">Under</h1>
+                <h1 align="center">Development</h1>
+            </div>
+        </div>
+        
+        <div data-role="page" id="about">
+            <div data-role="header" data-position="fixed" data-theme="b">
+                <a href="#home-page" data-icon="home" data-role="button" data-theme="c">Home</a>
+                <h1>About Us</h1>
+            </div>
+            <div data-role="content">
+                <h1 align="center">Under</h1>
+                <h1 align="center">Development</h1>
+            </div>
+        </div>
+        
+        <div data-role="page" id="term">
+            <div data-role="header" data-position="fixed" data-theme="b">
+                <a href="#home-page" data-icon="home" data-role="button" data-theme="c">Home</a>
+                <h1>About Us</h1>
+            </div>
+            <div data-role="content">
+                <h1 align="center">Under</h1>
+                <h1 align="center">Development</h1>
+            </div>
+        </div>
+		<script src="jquery-1.7.2.min"></script>
+    	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/getdata.js"></script>
+        <script>
+            document.addEventListener("deviceready", onDeviceReady, false);
+			function onDeviceReady(){
+    		document.addEventListener("backbutton", function(e){
+       		if($.mobile.activePage.is('#home-page')){
+            navigator.app.exitApp();
+       				}
+       					else {
+          			 navigator.app.backHistory()
+      				 }
+    					}, false);
+				}
+        </script>
+        <script type="text/javascript" charset="utf-8">
+
+            function onLoad()
+            {
+                  document.addEventListener("deviceready", onDeviceReady, true);
+            }
+
+            function exitFromApp()
+             {
+                navigator.app.exitApp();
+             }
+
+        </script>
+
+        <script type="text/javascript">
+            $("#btnlogin").click(function(){
+                var username=$("#username").val();
+                var password=$("#password").val();
+                var url ="http://esdm.hol.es/login.php";
+                var dataString="username="+username+"&password="+password+"&login=";
+                
+                if($.trim(username).length>0 & $.trim(password).length>0)
+                {
+                    console.log(dataString);
+                    $.ajax({
+                        type: "POST",
+                        //url: "http://localhost/esdm/login.php",
+                        //url: url,
+                        url: "http://esdm.hol.es/login.php",
+                        //data: { username: username, password: password},
+                        data: dataString,
+                        crossDomain: true,
+                        cache: false,
+                        beforeSend: function(){ $("#btnlogin").html('Connecting...');},
+                        success: function(data){
+                        if(data=="success")
+                        {
+                            localStorage.login="true";
+                            localStorage.username=username;
+                            window.location.href = "index.html#home-page";
+                        }
+                        else if(data="failed")
+                        {
+                            alert("Login error");
+                            $("#login").html('Login');
+                        }
+                        }
+                    });
+                }return false;
+                //alert("TEST");
+            });
+        </script>
+
+	</body>
+</html>

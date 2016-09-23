@@ -1,0 +1,164 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" type="text/css">
+        
+        <title>Hello World</title>
+
+        <script src="jquery-1.7.2.min"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+
+        <!--<script>
+        // Check browser support
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            localStorage.setItem("lastname", "Nadzari");
+            // Retrieve
+            document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+        </script>-->
+        <script type="text/javascript" charset="utf-8" src="js/getdata.js"></script>
+        <script type="text/javascript">
+            //*******CHANGE THIS*********
+            //var domain ='http://localhost/esdm/';
+            var domain ='http://esdm.hol.es';
+            //*******CHANGE THIS*********
+              
+            document.addEventListener("deviceready", onDeviceReady, false);
+            
+            function onDeviceReady() {
+                
+                var username = localStorage.getItem("username");
+                var password = localStorage.getItem("password");
+                console.log(username);
+                 
+                if(username!='undefined')
+                {
+                    document.getElementById('message').innerHTML = "Welcome "+username+"!";
+                }
+                else{
+                    document.getElementById('message').innerHTML = "It didn't work  !";
+                }
+            }
+         
+        </script>
+        
+
+    </head>
+    
+    <body>
+        
+        <div data-role="page" id="home-page">
+    		<div data-role="header" data-theme="b">
+		        <h1>Media Litbang</h1>
+		        <a href="#left-panel" data-icon="bullets" data-iconpos="notext" data-theme="b" data-shadow="false" data-iconshadow="false" class="ui-nodisc-icon">Open left panel</a>
+		    </div><!-- /header -->
+		    
+    	<div role="main" class="ui-content">
+            <center><img src="img/esdm.png" width="25%"/></center>
+            <center><b>Kementrian Energi dan Sumber Daya Mineral</b></center>
+			<form>
+				<input name="search-1" id="search-1" placeholder="Cari Buku" value="" type="search">
+			</form>
+			<div data-role="tabs" id="tabs">
+  				<div data-role="navbar">
+    				<ul>
+		      			<li><a href="#one" data-ajax="false">Popular</a></li>
+		      			<li><a href="#two" data-ajax="false">Kategori</a></li>
+		      			<li><a href="#three" onclick="onError()" data-ajax="false">Pustaka</a></li>
+		    		</ul>
+		  	</div>
+			  <div id="one" >
+			    <ul id="mylist" data-role="listview" data-inset="true">
+         
+                </ul>
+			  </div>
+                
+			  <div id="two" >
+				<ul id="ListKategori" data-role="listview" data-inset="true">
+         
+                </ul>
+			  </div>
+			  <div id="three">
+			  
+			  </div>
+			</div>
+	        <!--<a href="#" onclick="openPDF()" >
+                    <h1>pdf</h1>
+            </a>
+            <a href="#" onclick="downloadPDF()" >
+                    <h1>Download</h1>
+            </a>
+            <button id = "downloadFile">DOWNLOAD</button>-->
+	    </div><!-- /content -->
+        
+        <div id="popupExit" style="max-width:400px;" data-role="popup" data-theme="b" data-overlay-theme="b" data-dismissible="false">
+            <div data-role="header" data-theme="a">
+            <h4>Keluar Aplikasi?</h4>
+            </div>
+            <div class="ui-content" role="main">
+                <h4 class="ui-title">Anda yakin ingin keluar dari aplikasi?</h4>
+                <!-- <p align="center">
+                <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" data-rel="back">Batal</a>
+                <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" onclick="logOutReady();" data-transition="flow">Keluar</a></p> -->
+                <p align="center">
+                <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" data-rel="back">Batal</a>
+                <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" onclick="logout();" data-transition="flow">Keluar</a></p>
+            </div>
+        </div>
+
+	
+		<div data-role="panel" id="left-panel" data-theme="c">
+			<div data-role="listview">
+                <center><img src="img/esdm.png" width="25%"/></center>
+                <center><b>Media Litbang</b></center><br />
+                <center><b><div id="message"></div></b></center><br />
+                <li><a href="#about">About Us</a></li>
+				<li><a href="#term">Term and Condition</a></li>
+				<li><a href="#popupExit" data-rel="popup" data-position-to="window">Keluar</a></li>
+			</div>
+		</div><!-- /panel -->
+        </div>
+        
+        <div data-role="page" id="profil">
+            <div data-role="header" data-position="fixed" data-theme="b">
+                <a href="#home-page" data-icon="home" data-role="button" data-theme="c">Home</a>
+                <h1>Profile</h1>
+            </div>
+            <div data-role="content">
+                <h1 align="center">Under</h1>
+                <h1 align="center">Development</h1>
+            </div>
+        </div>
+        
+        <div data-role="page" id="about">
+            <div data-role="header" data-position="fixed" data-theme="b">
+                <a href="#home-page" data-icon="home" data-role="button" data-theme="c">Home</a>
+                <h1>About Us</h1>
+            </div>
+            <div data-role="content">
+                <h1 align="center">Under</h1>
+                <h1 align="center">Development</h1>
+            </div>
+        </div>
+        
+        <div data-role="page" id="term">
+            <div data-role="header" data-position="fixed" data-theme="b">
+                <a href="#home-page" data-icon="home" data-role="button" data-theme="c">Home</a>
+                <h1>About Us</h1>
+            </div>
+            <div data-role="content">
+                <h1 align="center">Under</h1>
+                <h1 align="center">Development</h1>
+            </div>
+        </div>
+        </body>
+</html>

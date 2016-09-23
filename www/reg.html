@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" type="text/css">
+        
+        <title>Hello World</title>
+
+        <script src="jquery-1.7.2.min"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+
+        <script type="text/javascript">
+            //*******CHANGE THIS*********
+            //var domain ='http://localhost/esdm/';
+            var domain ='http://esdm.hol.es';
+
+            //*******CHANGE THIS*********
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            function onDeviceReady() {
+                
+            }
+        </script>
+
+        <script type="text/javascript" charset="utf-8" src="js/getdata.js"></script>
+    </head>
+    
+    <body>
+<div data-role="page">
+            <div data-role="content">
+                <center><img src="img/esdm.png" width="40%"/></center>
+                <center><b>Kementrian Energi dan Sumber Daya Mineral</b></center>
+                    <span id="result"></span>
+                    <input name="username" id="username" type="text" placeholder="Username" data-clear-btn="true" onkeyup="check()">
+                    <input name="email" id="email" type="text" placeholder="E-mail" data-clear-btn="true">
+                    <span id="passw"></span>
+                    <input name="password" id="password" type="text" placeholder="Password" data-clear-btn="true">
+                    <input name="password2" id="password2" type="text" placeholder="Ulangi Password" data-clear-btn="true">
+                    <!-- <input name="nm_depan" id="nm_depan" type="text" placeholder="Nama Depan" data-clear-btn="true">
+                    <input name="nm_belakang" id="nm_belakang" type="text" placeholder="Nama Belakang" data-clear-btn="true">
+                    <fieldset data-role="controlgroup" data-mini="true">
+                        <legend>Jenis Kelamin:</legend>
+                        <input name="radio-choice-v-6" id="radio-choice-v-6a" type="radio">
+                        <label for="radio-choice-v-6a">Pria</label>
+                        <input name="radio-choice-v-6" id="radio-choice-v-6b" type="radio">
+                        <label for="radio-choice-v-6b">Wanita</label>
+                    </fieldset> -->
+                
+                <p align="right"><!-- <a href="#regisok" id="register" data-role="button" data-inline="true" data-theme="b" onclick="login()">Register</a> --><!-- <a href="" id="register" data-role="button" data-inline="true" data-theme="b" onclick="login()">Register</a> --><!-- <button id="register" data-role="button" data-inline="true" data-theme="b" onclick="signup()">Register</button> -->
+                <input type="submit" name="register" id="register" value="Register" onclick="signup()" /></p>
+            </div>
+        </div>
+        
+        <div id="message"></div>
+        <!-- <div data-role="page" id="regisok">
+            <div data-role="header" data-position="fixed">
+                <h1>Smart Book</h1>
+            </div>
+            <div data-role="content">
+                <center><img src="img/esdm.png" width="20%"/></center>
+                <h4 align="center">Akun anda telah berhasil dibuat</h4>
+                <h4 align="center">Silahkan Login</h4>
+                <center><a href="#login" data-role="button" data-theme="b">Login</a></center>
+            </div>
+        </div> -->
+    </body>
+</html>

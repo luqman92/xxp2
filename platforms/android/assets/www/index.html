@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        
+       	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" type="text/css">
+       	
+        <title>Hello World</title>
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="jquery-1.7.2.min"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/getdata.js"></script>
+        <script type="text/javascript">
+            //*******CHANGE THIS*********
+            //var domain ='http://localhost/esdm/';
+            var domain ='http://esdm.hol.es';
+            //*******CHANGE THIS*********
+              
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            function onDeviceReady() {
+            //document.addEventListener("backbutton", onBackKeyDown, false);
+              document.addEventListener("backbutton", function(e){
+                   if($.mobile.activePage.is('#homepage')){
+                       e.preventDefault();
+                       navigator.app.exitApp();
+                   }
+                   else {
+                       navigator.app.backHistory()
+                   }
+                }, false);
+                
+                var username = localStorage.getItem("username");
+                var password = localStorage.getItem("password");
+            	//document.getElementById("bissmillah").innerHTML = localStorage.getItem("username");
+
+                if(username != null && password != null)
+                {
+                    if(username != false && password != false)
+                    {
+                        if(username != "" && password != "")
+                        {
+                            window.location = "main.html";
+                        }
+                    }
+                }
+            }
+            /*function onBackKeyDown() {
+            
+            }*/
+         
+        </script>
+        
+
+    </head>
+    
+    <body>
+
+       <div data-role="page" id="homepage">
+            <div data-role="content">
+                <center><img src="img/esdm.png" width="50%"/></center>
+                <center><b>Kementrian Energi dan Sumber Daya Mineral</b></center>
+                <form>
+                    <input name="username" id="username" type="text" placeholder="Username" data-clear-btn="true">
+                    <input name="password" id="password" type="password" placeholder="Password" data-clear-btn="true">
+                </form>
+                <div id="message"></div><br>
+                <p align="right">
+                    <a href="reg.html" data-role="button" data-inline="true" data-theme="c">Register</a>
+                    <button id="login" data-role="button" data-inline="true" data-theme="b" onclick="login()">Login</button>
+                    <!-- <a href="#home-page" data-role="button" data-inline="true" data-theme="b">Login</a> -->
+                    <!-- The username is set as: <span id="uname"></span> <span id="pwd"></span> -->
+                </p>
+            </div>
+        </div>
+	</body>
+</html>
