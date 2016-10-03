@@ -28,11 +28,9 @@ $(document).on("pagebeforeshow", "#home-page", function () {
             $('body').append(newpage);
             $("#mylist").html(output).listview('refresh');
     });
-    
-});
-
-$(document).on("pagebeforeshow", "#home-page", function () {    
-
+	
+	
+	
     $.getJSON('http://esdm.hol.es/getkategori.php', function(data) {
   /*$.getJSON('http://localhost/esdm/getkategori.php', function(data) {*/
             var output="";
@@ -41,15 +39,16 @@ $(document).on("pagebeforeshow", "#home-page", function () {
                 output+="<li>" + 
                 "<a href=\"#LisKat" + data.items[i].IdKategori + "\"><span class=\"ui-li-count\">" + data.items[i].jmlbk + "</span>" +
                 "<h3>" + data.items[i].NamaKategori + "</h3>" +
-                "</li>";
-                //console.log(data.items);
-                //see if page already exists in DOM
-               /* if ($("#LisKat" + data.items[i].IdBuku).length == 0) {
-                    newpage+="<div data-role=\"page\" id=\"page" + data.items[i].IdBuku + "\">";
-                    newpage+="<div data-role=\"header\">"+ "<a data-role=\"button\" data-rel=\"back\" data-icon=\"back\">Back</a>" +"<h3>" +  data.items[i].NamaBuku +  "</h3></div>";
-                    newpage+="<div role=\"main\" class=\"ui-content\">" + data.items[i].Status +  "</div> </div>";
-                }*/
+                "</a></li>";
             }
+			
+			if ($("#LisKat" + data.items[i].IdKategori).length == 0) {
+                  //var strkategori = data.items[i].NamaKategori;
+                    newpage+="<div data-role=\"LisKat\" id=\"LisKat" + data.items[i].IdKategori + "\">test</div>";
+                    //newpage+="<div data-role=\"header\" data-theme=\"b\">"+ "<a data-role=\"button\" data-rel=\"back\" data-icon=\"back\">Back</a>" +"<h1>" + data.items[i].NamaKategori + "</h1></div>";
+                    //newpage+="<div role=\"main\" class=\"ui-content\"><p>" + strbook.substring(0,100) +  "</p></div></div>";
+                }
+			
             output+="";
             newpage += "";
             $('body').append(newpage);
@@ -60,124 +59,7 @@ $(document).on("pagebeforeshow", "#home-page", function () {
 
 
 
-/*document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady() {
-   // as soon as this function is called FileTransfer "should" be defined
-   
-var fileTransfer = new FileTransfer();
-var uri = encodeURI("http://www.i-drain.net/userfiles/file/einbauanleitung_iboard.pdf");
-var fileURL = encodeURI("http://localhost/download/");
-
-fileTransfer.download(
-    uri,
-    fileURL,
-    function(entry) {
-        console.log("download complete: " + entry.toURL());
-    },
-    function(error) {
-        console.log("download error source " + error.source);
-        console.log("download error target " + error.target);
-        console.log("upload error code" + error.code);
-    },
-    false,
-    {
-        headers: {
-            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-        }
-    }
-);
-    console.log(FileTransfer);
-}*/
-
-/*$(document).on('pagebeforeshow','#home-page',function() {
-    $.getJSON("http://esdm.hol.es/getdatabuku.php",function(data){
-        listbuku = data.items;
-        console.log(listbuku);
-      $.each(listbuku, function(i, field){
-        $('#DataBuku').append('<li><a href="#pdfFile' + field.IdBuku + 'data-transition="flip"> ' +
-        '<h2>' + field.NamaBuku + '</h2>'+
-        '<p>'+ field.Deskripsi +'</p></a></li>');
-     });
-    });
- });*/
-
-/*$(document).ready(function() {
-    $.getJSON("http://esdm.hol.es/getkategori.php",function(result){
-        listkategori = result.items;
-        console.log(listkategori);
-      $.each(listkategori, function(i, field){
-        $('#Kategori').append('<li><a href="#pdfFile' + field.IdKategori + 'data-transition="flip"> ' +
-        '<h2>' + field.NamaKategori + '</h2>'+
-        '<p>'+ field.Status +'</p></a></li>');
-     });
-    });
- });*/
-
-/*function openPDF(){
-    window.open('http://www.i-drain.net/userfiles/file/einbauanleitung_iboard.pdf', '_blank', 'location=yes')
-}*/
-
-//document.addEventListener("deviceready", openPDF, false);
-/*function openPDF() {
-
-window.open('https://docs.google.com/viewer?url=http://www.i-drain.net/userfiles/file/einbauanleitung_iboard.pdf&embedded=true', '_self', 'location=yes'); 
-ref = window.open('home.html', '_self');
- }*/
-
-/*document.addEventListener('deviceready', function () {
-    // cordova.plugins.SitewaertsDocumentViewer is now available
-    SitewaertsDocumentViewer.canViewDocument(url, contentType, options, onPossible, onMissingApp, onImpossible, onError);
-}, false);*/
-
-//document.getElementById("downloadFile").addEventListener("click", downloadFile);
-/*function downloadFile() {
-
-   var fileTransfer = new FileTransfer();
-   var uri = encodeURI("http://s14.postimg.org/i8qvaxyup/bitcoin1.jpg");
-   var fileURL =  "///storage/emulated/0/DCIM/myFile";
-
-   fileTransfer.download(
-      uri, fileURL, function(entry) {
-         console.log("download complete: " + entry.toURL());
-      },
-		
-      function(error) {
-         console.log("download error source " + error.source);
-         console.log("download error target " + error.target);
-         console.log("download error code" + error.code);
-      },
-		
-      false, {
-         headers: {
-            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-         }
-      }
-   );
-}*/
-/*function downloadPDF() {
-var fileTransfer = new FileTransfer();
-var uri = encodeURI("http://localhost/smartbook/pdf/esdm.pdf");
-
-fileTransfer.download(
-    uri,
-    fileURL,
-    function(entry) {
-        console.log("download complete: " + entry.toURL());
-    },
-    function(error) {
-        console.log("download error source " + error.source);
-        console.log("download error target " + error.target);
-        console.log("upload error code" + error.code);
-    },
-    false,
-    {
-        headers: {
-            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-        }
-    }
-);
-}*/
 
  function check(){
          
