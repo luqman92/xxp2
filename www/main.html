@@ -7,7 +7,7 @@
         
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" type="text/css">
         
-        <title>Hello World</title>
+        <title>Mobile Apps</title>
 
         <script src="jquery-1.7.2.min"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
@@ -64,27 +64,46 @@
 		    
     	<div role="main" class="ui-content">
             <center><img src="img/esdm.png" width="25%"/></center>
-            <center><b>Kementrian Energi dan Sumber Daya Mineral</b></center>
-			<form>
+            <center><b>Kementerian Energi dan Sumber Daya Mineral</b></center><br><br>
+			<!-- <form>
 				<input name="search-1" id="search-1" placeholder="Cari Buku" value="" type="search">
-			</form>
+			</form> -->
 			<div data-role="tabs" id="tabs">
   				<div data-role="navbar">
     				<ul>
 		      			<li><a href="#one" data-ajax="false">Popular</a></li>
 		      			<li><a href="#two" data-ajax="false">Kategori</a></li>
-		      			<li><a href="#three" onclick="onError()" data-ajax="false">Pustaka</a></li>
+		      			<li><a href="#three" data-ajax="false">Pustaka</a></li>
 		    		</ul>
 		  	</div>
 			  <div id="one" >
-			    <ul id="mylist" data-role="listview" data-inset="true">
+
+			  	<form class="ui-filterable">
+				    <input id="filterBasic-input1" data-type="search">
+				</form>
+				
+			    <ul id="mylist" data-role="listview" data-inset="true" data-filter="true" data-input="#filterBasic-input1">
+			    <!-- <ul id="mylist" data-role="listview" data-inset="true"> -->
          
                 </ul>
 			  </div>
                 
 			  <div id="two" >
-				<ul id="ListKategori" data-role="listview" data-inset="true">
-         
+
+                <!-- <ul data-role="listview" data-count-theme="b" data-inset="true">
+                    <li><a href="#">Inbox <span class="ui-li-count">12</span></a></li>
+                    <li><a href="#">Outbox <span class="ui-li-count">0</span></a></li>
+                    <li><a href="#">Drafts <span class="ui-li-count">4</span></a></li>
+                    <li><a href="#">Sent <span class="ui-li-count">328</span></a></li>
+                    <li><a href="#">Trash <span class="ui-li-count">62</span></a></li>
+                </ul> -->
+
+			    <form class="ui-filterable">
+				    <input id="filterBasic-input2" data-type="search">
+				</form>
+				<ul id="ListKategori" data-role="listview" data-inset="true" data-filter="true" data-input="#filterBasic-input2" data-count-theme="b">
+				<!-- <ul id="ListKategori" data-role="listview" data-inset="true" onclick="onError()"> -->
+                
                 </ul>
 			  </div>
 			  <div id="three">
@@ -106,10 +125,7 @@
             </div>
             <div class="ui-content" role="main">
                 <h4 class="ui-title">Anda yakin ingin keluar dari aplikasi?</h4>
-                <!-- <p align="center">
-                <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" data-rel="back">Batal</a>
-                <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" onclick="logOutReady();" data-transition="flow">Keluar</a></p> -->
-                <p align="center">
+                <p style="text-align:center;">
                 <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" data-rel="back">Batal</a>
                 <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" href="#" onclick="logout();" data-transition="flow">Keluar</a></p>
             </div>
@@ -121,6 +137,7 @@
                 <center><img src="img/esdm.png" width="25%"/></center>
                 <center><b>Media Litbang</b></center><br />
                 <center><b><div id="message"></div></b></center><br />
+
                 <li><a href="#about">About Us</a></li>
 				<li><a href="#term">Term and Condition</a></li>
 				<li><a href="#popupExit" data-rel="popup" data-position-to="window">Keluar</a></li>
@@ -145,8 +162,21 @@
                 <h1>About Us</h1>
             </div>
             <div data-role="content">
-                <h1 align="center">Under</h1>
-                <h1 align="center">Development</h1>
+                <p style="text-align:justify;">Lorem ipsum dolor sit amet, vis in inani utroque. Cum quod constituto signiferumque ad. Vim paulo ancillae ex, mollis quaeque per ex, ei vis malis movet volutpat. Mei verear dolorum ea, et verterem salutandi mel. Tota semper id sit, ad unum iuvaret sed, eos justo minim quando eu.</p>
+                <a href="#popupLogin" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a" data-transition="pop">Sign in</a>
+                <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+                    <form>
+                        <div style="padding:10px 20px;">
+                            <h3>Please sign in</h3>
+                            <label for="un" class="ui-hidden-accessible">Username:</label>
+                            <input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+                            <label for="pw" class="ui-hidden-accessible">Password:</label>
+                            <input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+                            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign in</button>
+                        </div>
+                    </form>
+                </div>
+                
             </div>
         </div>
         
@@ -156,8 +186,7 @@
                 <h1>About Us</h1>
             </div>
             <div data-role="content">
-                <h1 align="center">Under</h1>
-                <h1 align="center">Development</h1>
+                <p style="text-align:justify;">Lorem ipsum dolor sit amet, vis in inani utroque. Cum quod constituto signiferumque ad. Vim paulo ancillae ex, mollis quaeque per ex, ei vis malis movet volutpat. Mei verear dolorum ea, et verterem salutandi mel. Tota semper id sit, ad unum iuvaret sed, eos justo minim quando eu.</p>
             </div>
         </div>
         </body>

@@ -34,18 +34,17 @@ $(document).on("pagebeforeshow", "#home-page", function () {
 $(document).on("pagebeforeshow", "#home-page", function () {    
 
     $.getJSON('http://esdm.hol.es/getkategori.php', function(data) {
-	/*$.getJSON('http://localhost/esdm/getkategori.php', function(data) {*/
+  /*$.getJSON('http://localhost/esdm/getkategori.php', function(data) {*/
             var output="";
             var newpage="";
             for (var i in data.items) {
                 output+="<li>" + 
-                "<a href=\"#" + data.items[i].IdKategori + "\">" +
+                "<a href=\"#LisKat" + data.items[i].IdKategori + "\"><span class=\"ui-li-count\">" + data.items[i].jmlbk + "</span>" +
                 "<h3>" + data.items[i].NamaKategori + "</h3>" +
-                "<p>" + data.items[i].Status + "</p>" + "</a>" +
                 "</li>";
-                
+                //console.log(data.items);
                 //see if page already exists in DOM
-               /* if ($("#page" + data.items[i].IdBuku).length == 0) {
+               /* if ($("#LisKat" + data.items[i].IdBuku).length == 0) {
                     newpage+="<div data-role=\"page\" id=\"page" + data.items[i].IdBuku + "\">";
                     newpage+="<div data-role=\"header\">"+ "<a data-role=\"button\" data-rel=\"back\" data-icon=\"back\">Back</a>" +"<h3>" +  data.items[i].NamaBuku +  "</h3></div>";
                     newpage+="<div role=\"main\" class=\"ui-content\">" + data.items[i].Status +  "</div> </div>";
@@ -54,7 +53,7 @@ $(document).on("pagebeforeshow", "#home-page", function () {
             output+="";
             newpage += "";
             $('body').append(newpage);
-            $("#Kategori").html(output).listview('refresh');
+            $("#ListKategori").html(output).listview('refresh');
     });
     
 });

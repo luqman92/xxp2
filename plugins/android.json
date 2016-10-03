@@ -12,6 +12,9 @@
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.sysorange.medialitbang"
+        },
+        "de.sitewaerts.cordova.documentviewer": {
+            "PACKAGE_NAME": "com.sysorange.medialitbang"
         }
     },
     "dependent_plugins": {}

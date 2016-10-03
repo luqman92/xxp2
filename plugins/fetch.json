@@ -14,5 +14,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "de.sitewaerts.cordova.documentviewer": {
+        "source": {
+            "type": "registry",
+            "id": "de.sitewaerts.cordova.documentviewer"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

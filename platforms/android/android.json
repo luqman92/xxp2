@@ -15,6 +15,20 @@
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SitewaertsDocumentViewer\"><param name=\"android-package\" value=\"de.sitewaerts.cordova.documentviewer.DocumentViewerPlugin\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -27,6 +41,9 @@
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.sysorange.medialitbang"
+        },
+        "de.sitewaerts.cordova.documentviewer": {
+            "PACKAGE_NAME": "com.sysorange.medialitbang"
         }
     },
     "dependent_plugins": {},
@@ -37,10 +54,19 @@
             "clobbers": [
                 "navigator.splashscreen"
             ]
+        },
+        {
+            "file": "plugins/de.sitewaerts.cordova.documentviewer/www/sitewaertsdocumentviewer.js",
+            "id": "de.sitewaerts.cordova.documentviewer.SitewaertsDocumentViewer",
+            "clobbers": [
+                "cordova.plugins.SitewaertsDocumentViewer",
+                "SitewaertsDocumentViewer"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-whitelist": "1.2.2",
-        "cordova-plugin-splashscreen": "3.2.2"
+        "cordova-plugin-splashscreen": "3.2.2",
+        "de.sitewaerts.cordova.documentviewer": "0.2.0"
     }
 }
