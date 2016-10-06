@@ -34,28 +34,56 @@ $(document).on("pagebeforeshow", "#home-page", function () {
     $.getJSON('http://esdm.hol.es/getkategori.php', function(data) {
   /*$.getJSON('http://localhost/esdm/getkategori.php', function(data) {*/
             var output="";
-            var newpage="";
+            //var newpage="";
             for (var i in data.items) {
                 output+="<li>" + 
-                "<a href=\"#LisKat" + data.items[i].IdKategori + "\"><span class=\"ui-li-count\">" + data.items[i].jmlbk + "</span>" +
+                "<a href=\"main.html#pageKat?id=" + data.items[i].IdKategori + "\" rel=\"external\"><span class=\"ui-li-count\" data-ajax=\"false\">" + data.items[i].jmlbk + "</span>" +
+                //"<a href=\"main.html#pageKat?id=" + data.items[i].IdKategori + "\"><span class=\"ui-li-count\">" + data.items[i].jmlbk + "</span>" +
                 "<h3>" + data.items[i].NamaKategori + "</h3>" +
                 "</a></li>";
             }
 			
-			if ($("#LisKat" + data.items[i].IdKategori).length == 0) {
-                  //var strkategori = data.items[i].NamaKategori;
-                    newpage+="<div data-role=\"LisKat\" id=\"LisKat" + data.items[i].IdKategori + "\">test</div>";
-                    //newpage+="<div data-role=\"header\" data-theme=\"b\">"+ "<a data-role=\"button\" data-rel=\"back\" data-icon=\"back\">Back</a>" +"<h1>" + data.items[i].NamaKategori + "</h1></div>";
-                    //newpage+="<div role=\"main\" class=\"ui-content\"><p>" + strbook.substring(0,100) +  "</p></div></div>";
-                }
-			
             output+="";
-            newpage += "";
-            $('body').append(newpage);
+            //newpage += "";
+            //$('body').append(newpage);
             $("#ListKategori").html(output).listview('refresh');
     });
     
 });
+
+  var id = getUrlVars()['id'];
+  displayDetailKat();
+  //$.getJSON("http://esdm.hol.es/getdatabukukategori.php?id=7", function(data){
+  function displayDetailKat(){
+  $.getJSON("http://esdm.hol.es/getdatabukukategori.php?id="+ id, function(data){
+    $('#pageKat').show();
+    $.each(data, function(i, field){
+      $("#DetailKat").append(
+        "<li>" + field.NamaBuku + "</li>");
+    });
+    
+  });
+}
+
+/*
+function displayVod() {
+$.getJSON(soURL + 'vod.php?id='+id,function(data) {
+    var AmbilDataVod = data.items;
+    console.log(AmbilDataVod);
+    $('#loading').hide();
+    $('#tampilDatavod').show();
+    $.each(AmbilDataVod, function(index, field) {
+      var vod_nm = field.vod_nm;
+      var vod_desc = field.vod_desc;
+      var vod_filter = field.vod_filter;
+      var vod_link = field.vod_link;
+      
+      $("#dataVod").append('<li data-filtertext="'+vod_filter+'"class="listview-custom"><a href="'+vod_link+'">'+vod_nm+'</a></li>'); 
+    });
+  });
+}
+
+*/
 
 
 
@@ -179,4 +207,16 @@ function link(){
 function onError() {
 	alert('Under construction');
     window.location.href = 'index.html';
+}
+
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }
